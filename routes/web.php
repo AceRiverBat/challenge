@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\cartsController;
+use App\Http\Controllers\AproposController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\articlesController;
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +20,7 @@ Route::get('/admin', [articlesController::class, 'index2'])->middleware(['auth']
 
 Route::get('/', [articlesController::class, 'index']);
 
-Route::get('/cart', [cartsController::class, 'index'])->middleware(['auth'])->name('cart');
-
-Route::post('cart/delete/{id}', [cartsController::class, 'delete'])->middleware(['auth']);
-
 Route::post('article/add/{article_id}', [cartsController::class, 'add'])->middleware(['auth']);
-
-Route::get('cart/checkout/{id}/{total}', [cartsController::class, 'checkout'])->middleware(['auth']);
 
 Route::get('article/{id}', [articlesController::class, 'show']);
 
@@ -47,3 +42,7 @@ Route::get('/admin/create', [articlesController::class, 'create'])->middleware([
 
 Route::post('/admin/delete/{id}', [articlesController::class, 'destroy'])->middleware(['auth'])->name('destroy');
 Route::post('/admin/{id}', [articlesController::class, 'update'])->middleware(['auth']);
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/apropos', [AproposController::class, 'index'])->name('apropos');

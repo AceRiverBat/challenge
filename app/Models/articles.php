@@ -12,7 +12,6 @@ class articles extends Model
     protected $fillable = [
         'image',
         'nom',
-        'prix',
         'description'
     ];
 }
